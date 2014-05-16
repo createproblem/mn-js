@@ -1,19 +1,20 @@
 'use strict';
 
-angular
-  .module('mnjsApp', [
-    'ngCookies',
-    'ngResource',
-    'ngSanitize',
-    'ngRoute'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+var mnjsApp = angular.module('mnjsApp', [
+  'ngCookies',
+  'ngResource',
+  'ngSanitize',
+  'ngRoute',
+  'mnjsControllers'
+]);
+
+mnjsApp.config(function ($routeProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'views/main.html',
+      controller: 'MovieListCtrl'
+    })
+    .otherwise({
+      redirectTo: '/'
+    });
+});

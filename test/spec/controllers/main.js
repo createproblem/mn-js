@@ -1,22 +1,27 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('mnjs controllers', function () {
 
-  // load the controller's module
+  beforeEach(function() {
+    this.addMatchers({
+      toEqualData: function(expected) {
+        return angular.quals(this.actual, expected);
+      }
+    });
+  });
+
   beforeEach(module('mnjsApp'));
 
-  var MainCtrl,
-    scope;
+  describe('MovieListCtrl', function() {
+    var scope, ctrl
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
-      $scope: scope
+    beforeEach(inject(function($rootScope, $controller) {
+      scope = $rootScope.$new();
+      ctrl = $controller('MovieListCtrl', {$scope: scope});
+    }));
+
+    it('should attach a list of awesomeThings to the scope', function () {
+      expect(scope.awesomeThings.length).toBe(3);
     });
-  }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
   });
 });
