@@ -4,11 +4,25 @@
 
 describe('mnjs App', function() {
 
-  it('should redirect index.html to index.html#/phones', function() {
+  it('should redirect index.html to index.html#/', function() {
     browser.get('/');
     browser.getLocationAbsUrl().then(function(url) {
-        expect(url.split('#')[1]).toBe('/movies');
+        expect(url.split('#')[1]).toBe('/');
       });
+  });
+
+  describe('Main view', function() {
+    beforeEach(function() {
+      browser.get('#/');
+    });
+
+    it('should display the index page', function() {
+      var jumb = element.all(by.css('.jumbotron'));
+      var featureList = element.all(by.css('h2'));
+
+      expect(jumb.count()).toBe(1);
+      expect(featureList.count()).toBe(3);
+    });
   });
 
   describe('Movie list view', function() {

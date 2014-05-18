@@ -11,6 +11,7 @@ var mnjsApp = angular.module('mnjsApp', [
 
 mnjsApp.config(function ($routeProvider) {
   $routeProvider
+    .when('/', {templateUrl: 'views/main.html', controller: 'MainCtrl'})
     .when('/movies', {templateUrl: 'views/movie-list.html', controller: 'MovieListCtrl'})
-    .otherwise({redirectTo: '/movies'});
+    .otherwise({redirectTo: '/'});
 });
