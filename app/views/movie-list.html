@@ -8,7 +8,7 @@
         <div class="movie-tags" ng-hide="movie.tags.length === 0" class="ng-hide">
           <i class="glyphicon glyphicon-tags"></i> <span class="label label-default movie-tag" ng-repeat="tag in movie.tags">{{ tag }}</span>
         </div>
-        <p>{{movie.overview | limitTo:300}}...</p>
+        <p>{{movie.overview | limitTo:500}}...</p>
       </div>
     </div>
 </div>
