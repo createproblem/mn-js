@@ -25,6 +25,18 @@ describe('mnjs App', function() {
     });
   });
 
+  describe('Login view', function() {
+    beforeEach(function() {
+      browser.get('#/login');
+    });
+
+    it('should display the login page', function() {
+      var form = element.all(by.css('.login-form'));
+
+      expect(form.count()).toBe(1);
+    });
+  });
+
   describe('Movie list view', function() {
     beforeEach(function() {
       browser.get('#/movies');

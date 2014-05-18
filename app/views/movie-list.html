@@ -4,7 +4,7 @@
       <img class="media-object center-block visible-xs movie-img" ng-src="http://image.tmdb.org/t/p/w342{{movie.cover}}">
       <img class="media-object pull-left hidden-xs movie-img" ng-src="http://image.tmdb.org/t/p/w342{{movie.cover}}">
       <div class="media-body">
-        <h4>{{movie.title}} <span class="small">({{movie.releaseDate | date:'yyyy'}})</span></h4>
+        <h4>{{movie.title}} <span class="text-muted">({{movie.releaseDate | date:'yyyy'}})</span></h4>
         <div class="movie-tags" ng-hide="movie.tags.length === 0" class="ng-hide">
           <i class="glyphicon glyphicon-tags"></i> <span class="label label-default movie-tag" ng-repeat="tag in movie.tags">{{ tag }}</span>
         </div>
