@@ -2,13 +2,31 @@
 
 /* http://docs.angularjs.org/guide/dev_guide.e2e-testing */
 
-describe('PhoneCat App', function() {
+describe('mnjs App', function() {
 
   it('should redirect index.html to index.html#/phones', function() {
     browser.get('/');
     browser.getLocationAbsUrl().then(function(url) {
-        expect(url.split('#')[1]).toBe('/');
+        expect(url.split('#')[1]).toBe('/movies');
       });
+  });
+
+  describe('Movie list view', function() {
+    beforeEach(function() {
+      browser.get('#/movies');
+    });
+
+    it('schould show 25 movies in list', function() {
+      var movieList = element.all(by.repeater('movie in movies'));
+
+      expect(movieList.count()).toBe(25);
+    });
+
+    it('schould display labels in movie list', function() {
+      var labelList = element.all(by.repeater('tag in movie.tags'));
+
+      expect(labelList.count()).toBe(13);
+    });
   });
 
 
