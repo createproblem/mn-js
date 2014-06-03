@@ -6,8 +6,11 @@ var mnjsApp = angular.module('mnjsApp', [
   'ngSanitize',
   'ngRoute',
   'mnjsControllers',
+  'mnjsAuthControllers',
   'mnjsProfileController',
   'mnjsServices',
+  'mnjsUser',
+  'mnjsAuth'
 ]);
 
 mnjsApp.config(function ($routeProvider, $httpProvider) {
@@ -20,5 +23,3 @@ mnjsApp.config(function ($routeProvider, $httpProvider) {
 
   $httpProvider.responseInterceptors.push('httpInterceptor');
 });
-
-// angular.module('mnjsApp').constant('TEST', 'testnix');
