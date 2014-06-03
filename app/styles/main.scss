@@ -27,6 +27,14 @@ body {
     margin-right: 5px;
 }
 
+input.ng-invalid.ng-dirty {
+    border-color: $brand-danger;
+}
+
+input.ng-valid.ng-dirty {
+    border-color: $brand-success;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .movie-img {

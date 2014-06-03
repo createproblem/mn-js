@@ -6,15 +6,23 @@ mnjsControllers.controller('MainCtrl', ['$scope',
   function($scope) {
   }]);
 
-mnjsControllers.controller('AuthCtrl', ['$scope',
-  function($scope) {
+mnjsControllers.controller('AuthCtrl', ['$scope', 'Authorization', '$location',
+  function($scope, Authorization, $location) {
     $scope.login = function() {
       var credentials = {
         username: this.username,
         password: this.password
       };
 
-      console.log(credentials);
+      var success = function() {
+        $location.path('/');
+      };
+
+      Authorization.login(credentials, success);
+    };
+
+    $scope.refresh = function() {
+      Authorization.refresh();
     };
   }]);
 
