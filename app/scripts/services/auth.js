@@ -2,6 +2,8 @@
 
 angular.module('mnjsAuth', ['mnjsConfig']).factory('Auth', ['$http', '$cookieStore', '$rootScope', 'OAUTH_CONFIG',
   function($http, $cookieStore, $rootScope, OAUTH_CONFIG) {
+    $rootScope.loggedIn = false;
+
     return {
       login: function(credentials, callback) {
         var url = OAUTH_CONFIG.HOST + OAUTH_CONFIG.TOKEN_ENDPOINT;
@@ -13,7 +15,7 @@ angular.module('mnjsAuth', ['mnjsConfig']).factory('Auth', ['$http', '$cookieSto
 
         $http.get(url).then(function(response) {
           $cookieStore.put('token', response.data);
-
+          $rootScope.loggedIn = true;
           callback();
         });
       },
@@ -31,4 +33,20 @@ angular.module('mnjsAuth', ['mnjsConfig']).factory('Auth', ['$http', '$cookieSto
         });
       }
     };
-  }]);
+  }])
+  .directive('authRequired', ['$rootScope', 'Auth',
+    function($rootScope, Auth) {
+      return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+          var prevDisp = element.css('display');
+          $rootScope.$watch('loggedIn', function(loggedIn) {
+            if (loggedIn === true) {
+              element.css('display', prevDisp);
+            } else {
+              element.css('display', 'none');
+            }
+          });
+        }
+      }
+    }]);
