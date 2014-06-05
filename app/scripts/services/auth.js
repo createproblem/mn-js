@@ -4,6 +4,21 @@ angular.module('mnjsAuth', ['mnjsConfig']).factory('Auth', ['$http', '$cookieSto
   function($http, $cookieStore, $rootScope, OAUTH_CONFIG) {
     $rootScope.loggedIn = false;
 
+    var token = $cookieStore.get('token');
+    if (token !== undefined) {
+      var now = new Date();
+      var expiresAt = new Date(token.expires_at);
+      if (now < expiresAt) {
+        $rootScope.loggedIn = true;
+      }
+    }
+
+    var calcExpireDate = function(expiresIn) {
+      var date = new Date();
+      date.setSeconds(date.getSeconds() + expiresIn);
+      return date;
+    }
+
     return {
       login: function(credentials, callback) {
         var url = OAUTH_CONFIG.HOST + OAUTH_CONFIG.TOKEN_ENDPOINT;
@@ -14,8 +29,12 @@ angular.module('mnjsAuth', ['mnjsConfig']).factory('Auth', ['$http', '$cookieSto
         url += '&password=' + credentials.password;
 
         $http.get(url).then(function(response) {
-          $cookieStore.put('token', response.data);
+          var token = response.data;
+          token.expires_at = calcExpireDate(token.expires_in);
+
+          $cookieStore.put('token', token);
           $rootScope.loggedIn = true;
+
           callback();
         });
       },
@@ -29,7 +48,10 @@ angular.module('mnjsAuth', ['mnjsConfig']).factory('Auth', ['$http', '$cookieSto
         url += '&refresh_token=' + refreshToken;
 
         $http.get(url).then(function(response) {
-          $cookieStore.put('token', response.data);
+          var token = response.data;
+          token.expires_at = calcExpireDate(token.expires_in);
+          $cookieStore.put('token', token);
+          $rootScope.loggedIn = true;
         });
       }
     };
