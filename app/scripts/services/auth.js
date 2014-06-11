@@ -20,7 +20,7 @@ angular.module('mnjsAuth', ['mnjsConfig']).factory('Auth', ['$http', '$cookieSto
     }
 
     return {
-      login: function(credentials, callback) {
+      login: function(credentials, successCallback, errorCallback) {
         var url = OAUTH_CONFIG.HOST + OAUTH_CONFIG.TOKEN_ENDPOINT;
         url += '?client_id=' + OAUTH_CONFIG.CLIENT_ID;
         url += '&client_secret=' + OAUTH_CONFIG.CLIENT_SECRET;
@@ -35,7 +35,9 @@ angular.module('mnjsAuth', ['mnjsConfig']).factory('Auth', ['$http', '$cookieSto
           $cookieStore.put('token', token);
           $rootScope.loggedIn = true;
 
-          callback();
+          successCallback();
+        }, function(response) {
+          errorCallback();
         });
       },
       refresh: function() {
