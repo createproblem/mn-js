@@ -21,5 +21,25 @@ mnjsApp.config(function ($routeProvider, $httpProvider) {
     .when('/profile', {templateUrl: 'views/profile.html', controller: 'ProfileCtrl'})
     .otherwise({redirectTo: '/'});
 
-  $httpProvider.responseInterceptors.push('httpInterceptor');
+  var interceptor = ['$location', '$q',
+    function($location, $q) {
+      var success = function(response) {
+        return response;
+      };
+
+      var error = function(response) {
+        if (response.status === 401) {
+          $location.path('/login');
+          return $q.reject(response);
+        } else {
+          return $q.reject(response);
+        }
+      };
+
+      return function(promise) {
+        return promise.then(success, error);
+      };
+    }];
+
+  $httpProvider.responseInterceptors.push(interceptor);
 });
