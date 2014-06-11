@@ -8,6 +8,7 @@ var mnjsApp = angular.module('mnjsApp', [
   'mnjsControllers',
   'mnjsAuthControllers',
   'mnjsProfileController',
+  'mnjsRegisterController',
   'mnjsServices',
   'mnjsUser',
   'mnjsAuth'
@@ -19,6 +20,7 @@ mnjsApp.config(function ($routeProvider, $httpProvider) {
     .when('/login', {templateUrl: 'views/auth.html', controller: 'AuthCtrl'})
     .when('/movies', {templateUrl: 'views/movie-list.html', controller: 'MovieListCtrl'})
     .when('/profile', {templateUrl: 'views/profile.html', controller: 'ProfileCtrl'})
+    .when('/register', {templateUrl: 'views/register.html', controller: 'RegisterCtrl'})
     .otherwise({redirectTo: '/'});
 
   var interceptor = ['$location', '$q',

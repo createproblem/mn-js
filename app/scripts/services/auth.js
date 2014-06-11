@@ -73,4 +73,20 @@ angular.module('mnjsAuth', ['mnjsConfig']).factory('Auth', ['$http', '$cookieSto
           });
         }
       }
+    }])
+  .directive('authAnonymouse', ['$rootScope', 'Auth',
+    function($rootScope, Auth) {
+      return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+          var prevDisp = element.css('display');
+          $rootScope.$watch('loggedIn', function(loggedIn) {
+            if (loggedIn === false) {
+              element.css('display', prevDisp);
+            } else {
+              element.css('display', 'none');
+            }
+          });
+        }
+      }
     }]);
