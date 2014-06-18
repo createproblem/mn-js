@@ -23,3 +23,10 @@ mnjsAuthControllers.controller('AuthCtrl', ['$scope', 'Auth', '$location',
       }
     };
   }]);
+
+mnjsAuthControllers.controller('LogoutCtrl', ['$scope', 'Auth', '$location',
+  function($scope, Auth, $location) {
+    Auth.logout(function() {
+      $location.path('/');
+    });
+  }]);

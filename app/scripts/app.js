@@ -21,6 +21,7 @@ mnjsApp.config(function ($routeProvider, $httpProvider) {
     .when('/movies', {templateUrl: 'views/movie-list.html', controller: 'MovieListCtrl'})
     .when('/profile', {templateUrl: 'views/profile.html', controller: 'ProfileCtrl'})
     .when('/register', {templateUrl: 'views/register.html', controller: 'RegisterCtrl'})
+    .when('/logout', { templateUrl: 'views/empty.html', controller: 'LogoutCtrl'})
     .otherwise({redirectTo: '/'});
 
   var interceptor = ['$location', '$q',

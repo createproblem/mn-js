@@ -55,6 +55,10 @@ angular.module('mnjsAuth', ['mnjsConfig']).factory('Auth', ['$http', '$cookieSto
           $cookieStore.put('token', token);
           $rootScope.loggedIn = true;
         });
+      },
+      logout: function(callback) {
+        $rootScope.loggedIn = false;
+        callback();
       }
     };
   }])
