@@ -1,3 +1,4 @@
+/* jshint camelcase: false */
 'use strict';
 
 angular.module('services.auth', ['config']).factory('Auth', ['$http', '$cookieStore', '$rootScope', 'OAUTH_CONFIG',
@@ -17,7 +18,7 @@ angular.module('services.auth', ['config']).factory('Auth', ['$http', '$cookieSt
       var date = new Date();
       date.setSeconds(date.getSeconds() + expiresIn);
       return date;
-    }
+    };
 
     return {
       login: function(credentials, successCallback, errorCallback) {
@@ -36,7 +37,7 @@ angular.module('services.auth', ['config']).factory('Auth', ['$http', '$cookieSt
           $rootScope.loggedIn = true;
 
           successCallback();
-        }, function(response) {
+        }, function() {
           errorCallback();
         });
       },
@@ -62,11 +63,11 @@ angular.module('services.auth', ['config']).factory('Auth', ['$http', '$cookieSt
       }
     };
   }])
-  .directive('authRequired', ['$rootScope', 'Auth',
-    function($rootScope, Auth) {
+  .directive('authRequired', ['$rootScope',
+    function($rootScope) {
       return {
         restrict: 'A',
-        link: function(scope, element, attrs) {
+        link: function(scope, element) {
           var prevDisp = element.css('display');
           $rootScope.$watch('loggedIn', function(loggedIn) {
             if (loggedIn === true) {
@@ -76,21 +77,22 @@ angular.module('services.auth', ['config']).factory('Auth', ['$http', '$cookieSt
             }
           });
         }
-      }
+      };
     }])
-  .directive('authAnonymouse', ['$rootScope', 'Auth',
-    function($rootScope, Auth) {
+  .directive('authAnonymouse', ['$rootScope',
+    function($rootScope) {
       return {
         restrict: 'A',
-        link: function(scope, element, attrs) {
+        link: function(scope, element) {
           var prevDisp = element.css('display');
           $rootScope.$watch('loggedIn', function(loggedIn) {
-            if (loggedIn === false) {
+            console.log(loggedIn);
+            if (loggedIn === false || loggedIn === undefined) {
               element.css('display', prevDisp);
             } else {
               element.css('display', 'none');
             }
           });
         }
-      }
+      };
     }]);

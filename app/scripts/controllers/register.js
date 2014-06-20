@@ -4,10 +4,10 @@ angular.module('controllers.register', ['directives.ngMatch']).controller('Regis
   function($scope) {
     $scope.register = function(isValid) {
       if (isValid) {
-        var user = {
-          email: this.email,
-          password: this.password
-        };
+        // var user = {
+        //   email: this.email,
+        //   password: this.password
+        // };
 
         $scope.registerError = true;
       }

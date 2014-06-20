@@ -1,3 +1,4 @@
+/* jshint camelcase: false */
 'use strict';
 
 angular.module('services.user', ['ngResource']).factory('User', ['$resource', '$cookieStore',

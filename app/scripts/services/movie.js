@@ -1,3 +1,4 @@
+/* jshint camelcase: false */
 'use strict';
 
 angular.module('services.movie', ['ngResource', 'config']).factory('Movie', ['$resource', '$cookieStore', 'OAUTH_CONFIG',

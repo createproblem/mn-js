@@ -4,4 +4,4 @@ angular.module('services', [
   'services.auth',
   'services.user',
   'services.movie'
-  ]);
+]);

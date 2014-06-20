@@ -17,7 +17,7 @@ angular.module('controllers.auth', ['services.auth'])
 
         var error = function() {
           $scope.authError = true;
-        }
+        };
 
         Auth.login(credentials, success, error);
       }

@@ -6,4 +6,4 @@ angular.module('controllers', [
   'controllers.profile',
   'controllers.auth',
   'controllers.movie'
-  ]);
+]);
