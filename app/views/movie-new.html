@@ -5,7 +5,7 @@
         <label class="sr-only" for="query">Query</label>
         <input type="text" ng-model="query" name="query" class="form-control" placeholder="Movie Title" required>
       </div>
-      <button type="submit" class="btn btn-primary">Search</button>
+      <button type="submit" ng-disabled="movieNewForm.$invalid" class="btn btn-primary">Search</button>
     </form>
   </div>
 </div>
