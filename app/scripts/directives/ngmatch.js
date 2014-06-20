@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('directives.ngmatch', []).directive('ngMatch', ['$parse',
+angular.module('directives.ngMatch', []).directive('ngMatch', ['$parse',
   function($parse) {
     return {
       restrict: 'A',

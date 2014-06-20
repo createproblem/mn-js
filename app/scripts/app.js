@@ -12,7 +12,7 @@ var mnjsApp = angular.module('mnjsApp', [
   'mnjsServices',
   'mnjsUser',
   'mnjsAuth',
-  'mnjsMovie'
+  'mnjsMovie',
 ]);
 
 mnjsApp.config(function ($routeProvider, $httpProvider) {
