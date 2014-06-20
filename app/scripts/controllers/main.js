@@ -1,12 +1,7 @@
 'use strict';
 
-var mnjsControllers = angular.module('mnjsControllers', []);
+angular.module('controllers.main', [])
 
-mnjsControllers.controller('MainCtrl', ['$scope',
+.controller('MainCtrl', ['$scope',
   function($scope) {
-  }]);
-
-mnjsControllers.controller('MovieListCtrl', ['$scope', 'Movie',
-  function($scope, Movie) {
-    $scope.movies = Movie.query();
   }]);
