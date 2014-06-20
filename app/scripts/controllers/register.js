@@ -1,7 +1,5 @@
 'use strict';
 
-var mnjsRegisterController = angular.module('mnjsRegisterController', []);
-
-mnjsRegisterController.controller('RegisterCtrl', ['$scope',
+angular.module('controllers.register', ['directives.ngmatch']).controller('RegisterCtrl', ['$scope',
   function($scope) {
   }]);
