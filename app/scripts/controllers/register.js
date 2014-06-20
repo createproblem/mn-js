@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('controllers.register', ['directives']).controller('RegisterCtrl', ['$scope',
+angular.module('controllers.register', ['directives.ngMatch']).controller('RegisterCtrl', ['$scope',
   function($scope) {
     $scope.register = function(isValid) {
       if (isValid) {
