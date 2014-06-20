@@ -8,5 +8,7 @@ angular.module('services.movie', ['ngResource', 'config']).factory('Movie', ['$r
       return token.access_token;
     };
 
-    return $resource(OAUTH_CONFIG.HOST+'/api/movies.json', {'access_token': access_token}, {});
+    return $resource(OAUTH_CONFIG.HOST+'/api/movies.json', {'access_token': access_token}, {
+      'search': {method: 'GET', url: OAUTH_CONFIG.HOST+'/api/tmdb/search.json'}
+    });
   }]);
