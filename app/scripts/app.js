@@ -6,10 +6,7 @@ var mnjsApp = angular.module('mnjsApp', [
   'ngSanitize',
   'ngRoute',
   'controllers',
-  'mnjsServices',
-  'mnjsUser',
-  'mnjsAuth',
-  'mnjsMovie'
+  'services',
 ]);
 
 mnjsApp.config(function ($routeProvider, $httpProvider) {

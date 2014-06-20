@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mnjsUser', ['ngResource']).factory('UserApi', ['$resource', '$cookieStore',
+angular.module('services.user', ['ngResource']).factory('UserApi', ['$resource', '$cookieStore',
   function($resource, $cookieStore) {
     var access_token = function() {
       var token = $cookieStore.get('token') || {};
