@@ -63,7 +63,7 @@ angular.module('services.auth', ['config']).factory('Auth', ['$http', '$cookieSt
       }
     };
   }])
-  .directive('authRequired', ['$rootScope',
+  .directive('authRequired', ['$rootScope', 'Auth',
     function($rootScope) {
       return {
         restrict: 'A',
@@ -79,14 +79,13 @@ angular.module('services.auth', ['config']).factory('Auth', ['$http', '$cookieSt
         }
       };
     }])
-  .directive('authAnonymouse', ['$rootScope',
+  .directive('authAnonymouse', ['$rootScope', 'Auth',
     function($rootScope) {
       return {
         restrict: 'A',
         link: function(scope, element) {
           var prevDisp = element.css('display');
           $rootScope.$watch('loggedIn', function(loggedIn) {
-            console.log(loggedIn);
             if (loggedIn === false || loggedIn === undefined) {
               element.css('display', prevDisp);
             } else {
