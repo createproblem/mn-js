@@ -11,7 +11,8 @@ var mnjsApp = angular.module('mnjsApp', [
   'mnjsRegisterController',
   'mnjsServices',
   'mnjsUser',
-  'mnjsAuth'
+  'mnjsAuth',
+  'mnjsMovie'
 ]);
 
 mnjsApp.config(function ($routeProvider, $httpProvider) {
