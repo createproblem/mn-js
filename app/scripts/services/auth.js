@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('services.auth', ['mnjsConfig']).factory('Auth', ['$http', '$cookieStore', '$rootScope', 'OAUTH_CONFIG',
+angular.module('services.auth', ['config']).factory('Auth', ['$http', '$cookieStore', '$rootScope', 'OAUTH_CONFIG',
   function($http, $cookieStore, $rootScope, OAUTH_CONFIG) {
     $rootScope.loggedIn = false;
 
