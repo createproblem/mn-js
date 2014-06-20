@@ -13,6 +13,7 @@ mnjsApp.config(function ($routeProvider, $httpProvider) {
     .when('/', {templateUrl: 'views/main.html', controller: 'MainCtrl'})
     .when('/login', {templateUrl: 'views/auth.html', controller: 'AuthCtrl'})
     .when('/movies', {templateUrl: 'views/movie-list.html', controller: 'MovieListCtrl'})
+    .when('/movies/new', {templateUrl: 'views/movie-new.html', controller: 'MovieNewCtrl'})
     .when('/profile', {templateUrl: 'views/profile.html', controller: 'ProfileCtrl'})
     .when('/register', {templateUrl: 'views/register.html', controller: 'RegisterCtrl'})
     .when('/logout', { templateUrl: 'views/empty.html', controller: 'LogoutCtrl'})
