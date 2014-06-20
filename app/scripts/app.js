@@ -8,11 +8,11 @@ var mnjsApp = angular.module('mnjsApp', [
   'mnjsControllers',
   'mnjsAuthControllers',
   'mnjsProfileController',
-  'controllers.register',
+  'controllers',
   'mnjsServices',
   'mnjsUser',
   'mnjsAuth',
-  'mnjsMovie',
+  'mnjsMovie'
 ]);
 
 mnjsApp.config(function ($routeProvider, $httpProvider) {
