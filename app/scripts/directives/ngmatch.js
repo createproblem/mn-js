@@ -9,9 +9,9 @@ angular.module('directives.ngmatch', []).directive('ngMatch', ['$parse',
         var password = $parse(attrs['ngMatch']);
         var validator = function(value) {
           var tmp = password(scope),
-          valid = tmp === value;
+          isValid = tmp === value;
 
-          ctrl.$setValidity('match', valid);
+          ctrl.$setValidity('match', isValid);
 
           return value;
         };
