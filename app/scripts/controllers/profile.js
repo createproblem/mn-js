@@ -1,8 +1,8 @@
 'use strict';
 
-var mnjsProfileController = angular.module('mnjsProfileController', []);
+angular.module('controllers.profile', [])
 
-mnjsProfileController.controller('ProfileCtrl', ['$scope', 'UserApi',
+.controller('ProfileCtrl', ['$scope', 'UserApi',
   function($scope, UserApi) {
     $scope.user = UserApi.get();
   }]);

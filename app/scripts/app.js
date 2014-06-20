@@ -7,7 +7,6 @@ var mnjsApp = angular.module('mnjsApp', [
   'ngRoute',
   'mnjsControllers',
   'mnjsAuthControllers',
-  'mnjsProfileController',
   'controllers',
   'mnjsServices',
   'mnjsUser',
