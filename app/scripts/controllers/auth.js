@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('controllers.auth', [])
+angular.module('controllers.auth', ['services.auth'])
 
 .controller('AuthCtrl', ['$scope', 'Auth', '$location',
   function($scope, Auth, $location) {

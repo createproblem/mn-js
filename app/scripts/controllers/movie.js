@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('controllers.movie', [])
+angular.module('controllers.movie', ['services.movie'])
 
 .controller('MovieListCtrl', ['$scope', 'Movie',
   function($scope, Movie) {
