@@ -1,8 +1,8 @@
 'use strict';
 
-var mnjsAuthControllers = angular.module('mnjsAuthControllers', []);
+angular.module('controllers.auth', [])
 
-mnjsAuthControllers.controller('AuthCtrl', ['$scope', 'Auth', '$location',
+.controller('AuthCtrl', ['$scope', 'Auth', '$location',
   function($scope, Auth, $location) {
     $scope.login = function(isValid) {
       if (isValid) {
@@ -22,9 +22,9 @@ mnjsAuthControllers.controller('AuthCtrl', ['$scope', 'Auth', '$location',
         Auth.login(credentials, success, error);
       }
     };
-  }]);
+  }])
 
-mnjsAuthControllers.controller('LogoutCtrl', ['$scope', 'Auth', '$location',
+.controller('LogoutCtrl', ['$scope', 'Auth', '$location',
   function($scope, Auth, $location) {
     Auth.logout(function() {
       $location.path('/');

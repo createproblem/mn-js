@@ -6,7 +6,6 @@ var mnjsApp = angular.module('mnjsApp', [
   'ngSanitize',
   'ngRoute',
   'mnjsControllers',
-  'mnjsAuthControllers',
   'controllers',
   'mnjsServices',
   'mnjsUser',
