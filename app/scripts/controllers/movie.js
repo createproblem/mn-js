@@ -1,7 +1,7 @@
 /* jshint camelcase: false */
 'use strict';
 
-angular.module('controllers.movie', ['services.movie'])
+angular.module('controllers.movie', ['services.movie', 'services.message'])
 
 .controller('MovieListCtrl', ['$scope', 'Movie',
   function($scope, Movie) {
@@ -9,19 +9,21 @@ angular.module('controllers.movie', ['services.movie'])
   }
 ])
 
-.controller('MovieNewCtrl', ['$scope', 'Movie',
-  function($scope, Movie) {
+.controller('MovieNewCtrl', ['$scope', 'Movie', 'message',
+  function($scope, Movie, message) {
+        message.add('success', 'Could not add movie.');
+        message.add('success', 'Could not add movie.');
+
     $scope.addMovie = function(movieData) {
       var movie = new Movie({
         tmdbId: movieData.id
       });
 
       var success = function() {
-        $scope.success = true;
       };
 
       var error = function() {
-        $scope.error = true;
+        message.add('success', 'Could not add movie.');
       };
 
       movie.$save(null, success, error);

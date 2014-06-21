@@ -3,5 +3,6 @@
 angular.module('services', [
   'services.auth',
   'services.user',
-  'services.movie'
+  'services.movie',
+  'services.message'
 ]);

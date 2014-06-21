@@ -21,6 +21,15 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div style="position: fixed; right: 50px; top: 80px; z-index: 9999">
+      <ul style="list-style-type: none;">
+        <li ng-fade ng-repeat="message in messages">
+          <div class="message">
+            {{message.msg}}
+          </div>
+        </li>
+      </ul>
+    </div>
     <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -103,10 +112,12 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/config.js"></script>
         <script src="scripts/directives/ngmatch.js"></script>
+        <script src="scripts/directives/ngfade.js"></script>
         <script src="scripts/directives/directives.js"></script>
         <script src="scripts/services/user.js"></script>
         <script src="scripts/services/auth.js"></script>
         <script src="scripts/services/movie.js"></script>
+        <script src="scripts/services/message.js"></script>
         <script src="scripts/services/services.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/movie.js"></script>
