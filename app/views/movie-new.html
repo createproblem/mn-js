@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-xs-push-4 col-xs-8 col-md-7">
+  <div class="col-xs-12 col-sm-offset-4 col-sm-8">
     <form name="movieNewForm" ng-submit="search(movieNewForm.$valid)" class="form-inline" role="form" novalidate>
       <div class="form-group" ng-class="{'has-error' : movieNewForm.query.$invalid && !movieNewForm.query.$pristine}">
         <label class="sr-only" for="query">Query</label>
@@ -7,5 +7,19 @@
       </div>
       <button type="submit" ng-disabled="movieNewForm.$invalid" class="btn btn-primary">Search</button>
     </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-offset-3 col-sm-9">
+    <div ng-show="totalResults === 0">No movies where found.</div>
+
+    <div class="media movie" ng-repeat="movie in movies">
+      <img class="pull-left media-object img-responsive" ng-show="movie.poster_path.length > 0" ng-src="http://image.tmdb.org/t/p/w92/{{movie.poster_path}}">
+      <div class="media-body">
+        <h4>{{movie.title}} <span class="text-muted">({{movie.release_date | date:'yyyy'}})</span></h4>
+        <button class="btn btn-sm" ng-click="addMovie(movie)">Add</button>
+      </div>
+    </div>
   </div>
 </div>
