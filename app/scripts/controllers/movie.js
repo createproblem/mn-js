@@ -11,19 +11,19 @@ angular.module('controllers.movie', ['services.movie', 'services.message'])
 
 .controller('MovieNewCtrl', ['$scope', 'Movie', 'message',
   function($scope, Movie, message) {
-        message.add('success', 'Could not add movie.');
-        message.add('success', 'Could not add movie.');
-
     $scope.addMovie = function(movieData) {
       var movie = new Movie({
         tmdbId: movieData.id
       });
 
-      var success = function() {
+      var success = function(movie) {
+        var releaseDate = new Date(movie.release_date);
+        var msg = movie.title + ' (' + releaseDate.getFullYear() + ') added';
+        message.add('success', msg);
       };
 
-      var error = function() {
-        message.add('success', 'Could not add movie.');
+      var error = function(response) {
+        message.add('error', response.data[0].message);
       };
 
       movie.$save(null, success, error);
