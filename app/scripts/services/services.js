@@ -5,5 +5,4 @@ angular.module('services', [
   'services.user',
   'services.movie',
   'services.message',
-  'services.loading',
 ]);

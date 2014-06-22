@@ -6,8 +6,7 @@ var mnjsApp = angular.module('mnjsApp', [
   'ngSanitize',
   'ngRoute',
   'controllers',
-  'directives.ngFade',
-  'directives.ngLoading'
+  'directives.ngFade'
 ]);
 
 mnjsApp.config(function ($routeProvider, $httpProvider) {
