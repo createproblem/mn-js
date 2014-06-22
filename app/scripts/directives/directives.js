@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('directives', ['directives.ngMatch', 'directives.ngFade']);
+angular.module('directives', ['directives.ngMatch', 'directives.ngFade', 'directives.ngLoading']);

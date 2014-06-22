@@ -13,41 +13,52 @@ body {
 // messagebox
 
 .message {
-    color: #FFF;
-    background: #AA0000;
-    margin-bottom: 5px;
-    padding: 8px 20px;
-    border-radius: 3px;
+  color: #FFF;
+  background: #AA0000;
+  margin-bottom: 5px;
+  padding: 8px 20px;
+  border-radius: 3px;
+}
+
+.loader {
+  background: #AA0000;
+  border-radius: 3px;
+  color: #FFF;
+  padding: 8px 20px;
+  position: fixed;
+  bottom: 50px;
+  right: 5px;
+  z-index: 999;
 }
 
 // movies
 .movie {
-    margin-bottom: 5px;
-    // border: 1px solid aqua;
+  margin-bottom: 5px;
+  // border: 1px solid aqua;
 }
 
 // tags
 .movie-tags {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .movie-tags i {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 .movie-tag {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-    .movie-img {
-        max-width: 185px;
-    }
+  .movie-img {
+    max-width: 185px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .movie-img {
-        max-height: 500px;
-    }
+  .movie-img {
+    max-height: 500px;
+  }
 }
 
 /* Responsive: Portrait tablets and up */

@@ -4,5 +4,6 @@ angular.module('services', [
   'services.auth',
   'services.user',
   'services.movie',
-  'services.message'
+  'services.message',
+  'services.loading',
 ]);

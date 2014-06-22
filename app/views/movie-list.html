@@ -2,13 +2,13 @@
   <div class="col-sm-12 col-md-6 movies" ng-repeat="movie in movies">
     <div class="media movie">
       <img class="media-object center-block visible-xs movie-img" ng-src="http://image.tmdb.org/t/p/w342{{movie.poster_path}}">
-      <img class="media-object pull-left hidden-xs movie-img" ng-src="http://image.tmdb.org/t/p/w342{{movie.poster_path}}">
+      <img style="max-height: 185px;" class="media-object pull-left hidden-xs movie-img" ng-src="http://image.tmdb.org/t/p/w342{{movie.poster_path}}">
       <div class="media-body">
         <h4>{{movie.title}} <span class="text-muted">({{movie.release_date | date:'yyyy'}})</span></h4>
         <div class="movie-tags" ng-hide="movie.labels.length === 0" class="ng-hide">
           <i class="glyphicon glyphicon-tags"></i> <span class="label label-default movie-tag" ng-repeat="label in movie.labels">{{ label.name }}</span>
         </div>
-        <p>{{movie.overview | limitTo:500}}...</p>
+        <p>{{movie.overview | limitTo:400}}...</p>
       </div>
     </div>
 </div>
