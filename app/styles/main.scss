@@ -1,88 +1,50 @@
-$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+@import "../bower_components/foundation/scss/normalize";
+@import "settings";
+// Make sure the charset is set appropriately
 
-@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+@charset "UTF-8";
+
+// Behold, here are all the Foundation components.
+@import
+  "../bower_components/foundation/scss/foundation/components/grid",
+  "../bower_components/foundation/scss/foundation/components/accordion",
+  "../bower_components/foundation/scss/foundation/components/alert-boxes",
+  "../bower_components/foundation/scss/foundation/components/block-grid",
+  "../bower_components/foundation/scss/foundation/components/breadcrumbs",
+  "../bower_components/foundation/scss/foundation/components/button-groups",
+  "../bower_components/foundation/scss/foundation/components/buttons",
+  "../bower_components/foundation/scss/foundation/components/clearing",
+  "../bower_components/foundation/scss/foundation/components/dropdown",
+  "../bower_components/foundation/scss/foundation/components/dropdown-buttons",
+  "../bower_components/foundation/scss/foundation/components/flex-video",
+  "../bower_components/foundation/scss/foundation/components/forms",
+  "../bower_components/foundation/scss/foundation/components/icon-bar",
+  "../bower_components/foundation/scss/foundation/components/inline-lists",
+  "../bower_components/foundation/scss/foundation/components/joyride",
+  "../bower_components/foundation/scss/foundation/components/keystrokes",
+  "../bower_components/foundation/scss/foundation/components/labels",
+  "../bower_components/foundation/scss/foundation/components/magellan",
+  "../bower_components/foundation/scss/foundation/components/orbit",
+  "../bower_components/foundation/scss/foundation/components/pagination",
+  "../bower_components/foundation/scss/foundation/components/panels",
+  "../bower_components/foundation/scss/foundation/components/pricing-tables",
+  "../bower_components/foundation/scss/foundation/components/progress-bars",
+  "../bower_components/foundation/scss/foundation/components/range-slider",
+  "../bower_components/foundation/scss/foundation/components/reveal",
+  "../bower_components/foundation/scss/foundation/components/side-nav",
+  "../bower_components/foundation/scss/foundation/components/split-buttons",
+  "../bower_components/foundation/scss/foundation/components/sub-nav",
+  "../bower_components/foundation/scss/foundation/components/switches",
+  "../bower_components/foundation/scss/foundation/components/tables",
+  "../bower_components/foundation/scss/foundation/components/tabs",
+  "../bower_components/foundation/scss/foundation/components/thumbs",
+  "../bower_components/foundation/scss/foundation/components/tooltips",
+  "../bower_components/foundation/scss/foundation/components/top-bar",
+  "../bower_components/foundation/scss/foundation/components/type",
+  "../bower_components/foundation/scss/foundation/components/offcanvas",
+  "../bower_components/foundation/scss/foundation/components/visibility";
+
+  @import "appstyles";
 
 // bower:scss
-@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
-
-body {
-    padding-top: 80px;
-}
-
-// messagebox
-
-.message {
-  color: #FFF;
-  background: #AA0000;
-  margin-bottom: 5px;
-  padding: 8px 20px;
-  border-radius: 3px;
-}
-
-.loader {
-  background: #AA0000;
-  border-radius: 3px;
-  color: #FFF;
-  padding: 8px 20px;
-  position: fixed;
-  bottom: 50px;
-  right: 5px;
-  z-index: 999;
-}
-
-// movies
-.movie {
-  margin-bottom: 15px;
-  background: #EEEEEE;
-  padding: 8px;
-  border-radius: 3px;
-  // border: 1px solid aqua;
-}
-
-// tags
-.movie-tags {
-  margin-bottom: 10px;
-}
-.movie-tags i {
-  margin-right: 5px;
-}
-.movie-tag {
-  margin-right: 5px;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .movie-img {
-    max-width: 185px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .movie-img {
-    max-height: 500px;
-  }
-}
-
-/* Responsive: Portrait tablets and up */
-// @media screen and (min-width: 768px) {
-//     .container {
-//         max-width: 730px;
-//     }
-
-//     /* Remove the padding we set earlier */
-//     .header,
-//     .marketing,
-//     .footer {
-//         padding-left: 0;
-//         padding-right: 0;
-//     }
-//     /* Space out the masthead */
-//     .header {
-//         margin-bottom: 30px;
-//     }
-//     /* Remove the bottom border on the jumbotron for visual effect */
-//     .jumbotron {
-//         border-bottom: 0;
-//     }
-// }

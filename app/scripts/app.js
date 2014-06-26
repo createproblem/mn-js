@@ -1,44 +1,33 @@
 'use strict';
 
-var mnjsApp = angular.module('mnjsApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngRoute',
-  'controllers',
-  'directives.ngFade'
-]);
-
-mnjsApp.config(function ($routeProvider, $httpProvider) {
-  $routeProvider
-    .when('/', {templateUrl: 'views/main.html', controller: 'MainCtrl'})
-    .when('/login', {templateUrl: 'views/auth.html', controller: 'AuthCtrl'})
-    .when('/movies', {templateUrl: 'views/movie-list.html', controller: 'MovieListCtrl'})
-    .when('/movies/new', {templateUrl: 'views/movie-new.html', controller: 'MovieNewCtrl'})
-    .when('/profile', {templateUrl: 'views/profile.html', controller: 'ProfileCtrl'})
-    .when('/register', {templateUrl: 'views/register.html', controller: 'RegisterCtrl'})
-    .when('/logout', { templateUrl: 'views/empty.html', controller: 'LogoutCtrl'})
-    .otherwise({redirectTo: '/'});
-
-  var interceptor = ['$location', '$q',
-    function($location, $q) {
-      var success = function(response) {
-        return response;
-      };
-
-      var error = function(response) {
-        if (response.status === 401) {
-          $location.path('/login');
-          return $q.reject(response);
-        } else {
-          return $q.reject(response);
-        }
-      };
-
-      return function(promise) {
-        return promise.then(success, error);
-      };
-    }];
-
-  $httpProvider.responseInterceptors.push(interceptor);
-});
+/**
+ * @ngdoc overview
+ * @name mnJsApp
+ * @description
+ * # mnJsApp
+ *
+ * Main module of the application.
+ */
+angular
+  .module('mnJsApp', [
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch'
+  ])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });
