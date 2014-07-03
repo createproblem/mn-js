@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mnJsApp.services', []).factory('mnService', ['$rootScope', '$location',
-  function($rootScope, $location) {
+angular.module('mnJsApp.services', []).factory('mnService', ['$rootScope',
+  function($rootScope) {
     $rootScope.authorizationResult = false;
 
     $rootScope.connectMovieNightmare = function() {
