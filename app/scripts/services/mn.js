@@ -8,7 +8,9 @@ angular.module('mnJsApp.services', []).factory('mnService', ['$rootScope', '$loc
       OAuth.popup('movie_nightmare', {cache: true}, function(error, result) {
         if (!error) {
           $rootScope.authorizationResult = result;
-          $location.path('/profile');
+          if (!$rootScope.$$phase) {
+            $rootScope.$apply();
+          }
         }
       });
     };
