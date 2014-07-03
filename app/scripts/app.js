@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'mnJsApp.services',
-    'mnJsApp.directives'
+    'mnJsApp.directives',
+    'mnJsApp.controllers'
   ])
   .config(function ($routeProvider) {
     $routeProvider
