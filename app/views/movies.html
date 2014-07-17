@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="small-12 columns movie" ng-repeat="movie in movies">
+    <img class="left thumb" ng-src="http://image.tmdb.org/t/p/w92{{movie.poster_path}}">
+    <h4>
+      {{movie.title}} <small>({{movie.release_date | date:'yyyy'}})</small>
+    </h4>
+    <p>{{movie.overview | limitTo:200}} ...</p>
+  </div>
+</div>

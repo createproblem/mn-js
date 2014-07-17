@@ -22,7 +22,7 @@ angular.module('mnJsApp.services', []).factory('mnService', ['$rootScope',
 
     return {
       initialize: function() {
-        OAuth.initialize('LOftudjnlI49JuNEnI8P6drvYEk', {cache: true});
+        OAuth.initialize('H1PwfA3J3bTlgp2AeigdnMyCkPs', {cache: true});
         $rootScope.authorizationResult = OAuth.create('movie_nightmare');
       },
       isReady: function() {
