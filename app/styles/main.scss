@@ -44,23 +44,9 @@
   "../bower_components/foundation/scss/foundation/components/offcanvas",
   "../bower_components/foundation/scss/foundation/components/visibility";
 
-  @import "appstyles";
-
-  $fa-font-path: "../bower_components/font-awesome/fonts";
   @import "../bower_components/font-awesome/scss/font-awesome";
+
+  @import "appstyles";
 
 // bower:scss
 // endbower
-
-.movie { margin-bottom: 5px; }
-.movie:first-child { margin-top: 5px; }
-
-.thumb { margin-right: 5px; }
-
-.message {
-  color: #FFF;
-  background: #AA0000;
-  margin-bottom: 5px;
-  padding: 8px 20px;
-  border-radius: 3px;
-}
