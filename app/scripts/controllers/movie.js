@@ -4,19 +4,21 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
   function($scope, Movie) {
     $scope.movies = Movie.query();
   }])
-.controller('MovieNewCtrl', ['$scope', 'Movie',
-  function($scope, Movie) {
+.controller('MovieNewCtrl', ['$scope', 'Movie', 'Message',
+  function($scope, Movie, Message) {
     $scope.addMovie = function(movieData) {
       var movie = new Movie({
         tmdbId: movieData.id
       });
 
       var success = function(movie) {
-        console.log(movie);
+        var releaseDate = new Date(movie.release_date);
+        var msg = movie.title + ' (' + releaseDate.getFullYear() + ') added';
+        Message.add('success', msg);
       };
 
       var error = function(response) {
-        console.log(response);
+        Message.add('error', response.data[0].message);
       };
 
       movie.$save(null, success, error);
