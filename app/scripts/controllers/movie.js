@@ -1,8 +1,8 @@
 /* jshint camelcase: false */
 'use strict';
 
-angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie', '$anchorScroll',
-  function($scope, Movie, $anchorScroll) {
+angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie', '$anchorScroll', 'ngProgress', '$timeout',
+  function($scope, Movie, $anchorScroll, ngProgress, $timeout) {
     $scope.totalMovies = 0;
     $scope.moviesPerPage = 25;
 
@@ -17,12 +17,14 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
     };
 
     function getResultPage(page) {
+      ngProgress.start();
       Movie.paginated({
         'page': page,
         'max': $scope.moviesPerPage
       }, function(response) {
         $scope.totalMovies = response.total_results;
         $scope.movies = response.movies;
+        ngProgress.complete();
 
         $anchorScroll();
       });

@@ -16,6 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'ngProgress',
     'angularSmoothscroll',
     'mnJsApp.services',
     'mnJsApp.directives',
