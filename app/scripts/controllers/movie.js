@@ -24,6 +24,7 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
       }, function(response) {
         $scope.totalMovies = response.total_results;
         $scope.movies = response.movies;
+        // $timeout(function() {ngProgress.complete()});
         ngProgress.complete();
 
         $anchorScroll();
