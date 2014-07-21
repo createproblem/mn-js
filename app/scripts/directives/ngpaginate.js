@@ -151,7 +151,7 @@ angular.module('angularUtils.directives.dirPagination', [])
 
         return {
             restrict: 'AE',
-            templateUrl: 'directives/pagination/dirPagination.tpl.html',
+            templateUrl: 'views/tpl/ngpaginate.tpl.html',
             scope: {
                 maxSize: '=?',
                 onPageChange: '&?'

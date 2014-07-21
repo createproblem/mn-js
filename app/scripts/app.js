@@ -19,7 +19,8 @@ angular
     'angularSmoothscroll',
     'mnJsApp.services',
     'mnJsApp.directives',
-    'mnJsApp.controllers'
+    'mnJsApp.controllers',
+    'angularUtils.directives.dirPagination'
   ])
   .config(function ($routeProvider) {
     $routeProvider

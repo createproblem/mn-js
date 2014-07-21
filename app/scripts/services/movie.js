@@ -16,8 +16,6 @@ angular.module('mnJsApp.services').factory('Movie', ['$resource', 'mnService',
 
     return $resource('http://localhost:8000/api/movies.json', {'access_token': access_token}, {
       'search': {method: 'GET', url: 'http://localhost:8000/api/tmdb/search.json'},
-      'query':  {method:'GET', isArray: true, transformResponse: function(data, headersGetter) {
-        return angular.fromJson(data).movies;
-      }},
+      'paginated':  {method:'GET', isArray: false},
     });
   }]);

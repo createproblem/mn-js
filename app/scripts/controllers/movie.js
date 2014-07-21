@@ -1,13 +1,12 @@
 /* jshint camelcase: false */
 'use strict';
 
-angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie',
-  function($scope, Movie) {
-    $scope.movies = Movie.query();
+angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie', '$anchorScroll',
+  function($scope, Movie, $anchorScroll) {
     $scope.totalMovies = 0;
     $scope.moviesPerPage = 25;
 
-    // getResultPage(1);
+    getResultPage(1);
 
     $scope.pagination = {
       current: 1
@@ -18,9 +17,14 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
     };
 
     function getResultPage(page) {
-      Movie.query({
+      Movie.paginated({
         'page': page,
-        'max': 25
+        'max': $scope.moviesPerPage
+      }, function(response) {
+        $scope.totalMovies = response.total_results;
+        $scope.movies = response.movies;
+
+        $anchorScroll();
       });
     };
   }])
