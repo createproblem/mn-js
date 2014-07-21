@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mnJsApp.directives', []).directive('authRequired', ['$rootScope', 'mnService',
+angular.module('mnJsApp.directives').directive('authRequired', ['$rootScope', 'mnService',
   function($rootScope, mnService) {
     return {
       restrict: 'A',

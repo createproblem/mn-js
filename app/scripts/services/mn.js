@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mnJsApp.services', []).factory('mnService', ['$rootScope',
+angular.module('mnJsApp.services').factory('mnService', ['$rootScope',
   function($rootScope) {
     $rootScope.authorizationResult = false;
 

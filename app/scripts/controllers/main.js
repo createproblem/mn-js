@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of the mnJsApp
  */
-angular.module('mnJsApp.controllers', []).controller('MainCtrl', ['$scope', 'mnService',
+angular.module('mnJsApp.controllers').controller('MainCtrl', ['$scope', 'mnService',
   function($scope, mnService) {
     mnService.initialize();
     $scope.login = function() {

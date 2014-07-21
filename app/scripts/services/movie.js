@@ -1,3 +1,4 @@
+/* jshint camelcase: false */
 'use strict';
 
 angular.module('mnJsApp.services').factory('Movie', ['$resource', 'mnService',
