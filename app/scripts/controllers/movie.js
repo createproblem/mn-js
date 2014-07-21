@@ -4,6 +4,25 @@
 angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie',
   function($scope, Movie) {
     $scope.movies = Movie.query();
+    $scope.totalMovies = 0;
+    $scope.moviesPerPage = 25;
+
+    // getResultPage(1);
+
+    $scope.pagination = {
+      current: 1
+    };
+
+    $scope.pageChanged = function(newPage) {
+      getResultPage(newPage);
+    };
+
+    function getResultPage(page) {
+      Movie.query({
+        'page': page,
+        'max': 25
+      });
+    };
   }])
 .controller('MovieNewCtrl', ['$scope', 'Movie', 'Message',
   function($scope, Movie, Message) {
