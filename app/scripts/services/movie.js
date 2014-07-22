@@ -18,9 +18,10 @@ angular.module('mnJsApp.services').factory('Movie', ['$resource', 'mnService', '
       return configuration.oauth_host + configuration.oauth_api_endpoint;
     }
 
-    return $resource(url() + '/movies.json', {'access_token': access_token}, {
+    return $resource(url() + '/movies/:id.json', {'access_token': access_token}, {
       'search': {method: 'GET', url: url() + '/tmdb/search.json'},
       'paginated':  {method:'GET', isArray: false},
       'labels': {method: 'GET', url: url() + '/labels.json', isArray: true},
+      'update': {method: 'PUT'},
     });
   }]);

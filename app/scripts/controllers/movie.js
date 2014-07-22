@@ -10,7 +10,7 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
     $scope.config = {
       create: true
     };
-
+    $scope.myModel = "";
     getResultPage(1);
 
     $scope.pagination = {
@@ -19,6 +19,7 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
 
     // sel stuff
     $scope.tagBox = {};
+    $scope.tagData = {};
     $scope.toggleTagBox = function(movieId) {
       if ($scope.tagBox[movieId] === undefined || $scope.tagBox[movieId] === false) {
         $scope.tagBox[movieId] = true;
@@ -26,6 +27,14 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
         $scope.tagBox[movieId] = false;
       }
     };
+
+    $scope.saveLabels = function(movieId) {
+      var labels = $scope.tagData[movieId];
+      var movie = new Movie({
+        labels: labels
+      });
+      movie.$update({id: movieId});
+    }
 
     $scope.pageChanged = function(newPage) {
       getResultPage(newPage);
