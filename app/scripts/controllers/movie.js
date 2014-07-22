@@ -18,14 +18,14 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
     };
 
     // sel stuff
-    $scope.sel = {};
-    $scope.show = function(movieId) {
-      $scope.sel[movieId] = true;
+    $scope.tagBox = {};
+    $scope.toggleTagBox = function(movieId) {
+      if ($scope.tagBox[movieId] === undefined || $scope.tagBox[movieId] === false) {
+        $scope.tagBox[movieId] = true;
+      } else {
+        $scope.tagBox[movieId] = false;
+      }
     };
-
-    $scope.hide = function(movieId) {
-      $scope.sel[movieId] = false;
-    }
 
     $scope.pageChanged = function(newPage) {
       getResultPage(newPage);

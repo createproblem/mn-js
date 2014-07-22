@@ -4,10 +4,11 @@
     <h4>
       {{movie.title}} <small>({{movie.release_date | date:'yyyy'}})</small>
     </h4>
-    <a ng-click="show(movie.id)">show</a>
-    <a ng-click="hide(movie.id)">hide</a>
+    <a class="button tiny secondary no-margin-bottom" ng-click="toggleTagBox(movie.id)">
+      <i class="fa fa-tag"></i>
+    </a>
     <!-- <input ng-show="sel[movie.id]"> -->
-    <input selectize="{create: true}" options='[1, 2, 3]' ng-model="myModel" ng-show="sel[movie.id]">
+    <input selectize="{create: true}" options='[1, 2, 3]' ng-model="myModel" ng-show="tagBox[movie.id]">
     <p>{{movie.overview | limitTo:200}} ...</p>
   </div>
 </div>

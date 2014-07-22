@@ -16,15 +16,18 @@ angular.module('selectize', [])
       var show = function(value) {
         if (value) {
           $element.show();
-          $element.selectize({
-            create: true,
-            labelField: "value",
-            valueField: "value",
-            searchField: "value",
-            options: [
-              {id: 1, value: "Laser Pointer"},
-              {id: 2, value: "Destroy"}
-            ]
+          $timeout(function() {
+            $element.selectize({
+              create: true,
+              labelField: "value",
+              valueField: "value",
+              searchField: "value",
+              options: [
+                {id: 1, value: "Laser Pointer"},
+                {id: 2, value: "Destroy"}
+              ]
+            });
+            $element[0].selectize.setValue("");
           });
         } else {
           if ($element[0].selectize !== undefined) {
