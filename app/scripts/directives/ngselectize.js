@@ -2,7 +2,7 @@
 
 angular.module('selectize', [])
   .value('selectizeConfig', {})
-  .directive("selectize", ['selectizeConfig', '$timeout', function(selectizeConfig, $timeout) {
+  .directive("selectize", ['selectizeConfig', 'Movie', '$timeout', function(selectizeConfig, Movie, $timeout) {
 
   return {
     restrict: 'A',
@@ -19,13 +19,14 @@ angular.module('selectize', [])
           $timeout(function() {
             $element.selectize({
               create: true,
-              labelField: "value",
-              valueField: "value",
-              searchField: "value",
-              options: [
-                {id: 1, value: "Laser Pointer"},
-                {id: 2, value: "Destroy"}
-              ]
+              labelField: "name",
+              valueField: "name",
+              searchField: "name",
+              load: function(query, callback) {
+                Movie.labels({}, function(response) {
+                  callback(response);
+                });
+              }
             });
             $element[0].selectize.setValue("");
           });
