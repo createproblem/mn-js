@@ -5,12 +5,27 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
   function($scope, Movie, $anchorScroll, ngProgress, $timeout) {
     $scope.totalMovies = 0;
     $scope.moviesPerPage = 25;
+    $scope.config = {};
+    $scope.myOptions = [];
+    $scope.config = {
+      create: true
+    };
 
     getResultPage(1);
 
     $scope.pagination = {
       current: 1
     };
+
+    // sel stuff
+    $scope.sel = {};
+    $scope.show = function(movieId) {
+      $scope.sel[movieId] = true;
+    };
+
+    $scope.hide = function(movieId) {
+      $scope.sel[movieId] = false;
+    }
 
     $scope.pageChanged = function(newPage) {
       getResultPage(newPage);
