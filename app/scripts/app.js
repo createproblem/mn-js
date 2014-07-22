@@ -18,6 +18,8 @@ angular
     'ngTouch',
     'ngProgress',
     'angularSmoothscroll',
+    'selectize',
+    'services.config',
     'mnJsApp.services',
     'mnJsApp.directives',
     'mnJsApp.controllers',

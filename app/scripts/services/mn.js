@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('mnJsApp.services').factory('mnService', ['$rootScope',
-  function($rootScope) {
+angular.module('mnJsApp.services').factory('mnService', ['$rootScope', 'configuration',
+  function($rootScope, configuration) {
     $rootScope.authorizationResult = false;
 
     $rootScope.connectMovieNightmare = function() {
-      OAuth.popup('movie_nightmare_dev', {cache: true}, function(error, result) {
+      OAuth.popup(configuration.oauth_service, {cache: true}, function(error, result) {
         if (!error) {
           $rootScope.authorizationResult = result;
           if (!$rootScope.$$phase) {
@@ -16,14 +16,14 @@ angular.module('mnJsApp.services').factory('mnService', ['$rootScope',
     };
 
     $rootScope.signOut = function() {
-      OAuth.clearCache('movie_nightmare_dev');
+      OAuth.clearCache(configuration.oauth_service);
       $rootScope.authorizationResult = false;
     };
 
     return {
       initialize: function() {
-        OAuth.initialize('H1PwfA3J3bTlgp2AeigdnMyCkPs', {cache: true});
-        $rootScope.authorizationResult = OAuth.create('movie_nightmare_dev');
+        OAuth.initialize(configuration.oauth_api_key, {cache: true});
+        $rootScope.authorizationResult = OAuth.create(configuration.oauth_service);
       },
       isReady: function() {
         return $rootScope.authorizationResult;

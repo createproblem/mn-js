@@ -16,7 +16,8 @@
     "font-awesome": "~4.1.0",
     "angular-smoothscroll": "~1.1.1",
     "angular-foundation": "~0.3.0",
-    "ngprogress": "~1.0.4"
+    "ngprogress": "~1.0.4",
+    "selectize": "~0.10.1"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

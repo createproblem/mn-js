@@ -21,6 +21,8 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  grunt.loadNpmTasks('grunt-replace');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -282,6 +284,22 @@ module.exports = function (grunt) {
     //   dist: {}
     // },
 
+    replace: {
+      development: {
+        options: {
+          patterns: [{
+            json: grunt.file.readJSON('./config/environments/development.json')
+          }]
+        },
+        files: [{
+          expand: true,
+          flatten: true,
+          src: ['./config/config.js'],
+          dest: '<%= yeoman.app %>/scripts/services/'
+        }]
+      }
+    },
+
     imagemin: {
       dist: {
         files: [{
@@ -415,6 +433,7 @@ module.exports = function (grunt) {
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',
+      'replace:development',
       'watch'
     ]);
   });
