@@ -6,7 +6,7 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
     $scope.movies = {};
     $scope.labelData = {};
     $scope.labelBox = {};
-
+    ngProgress.start();
     Movie.query(function(movies) {
       $.each(movies, function(i, v) {
         $scope.movies[v.id] = v;
@@ -15,6 +15,7 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
           labelNames.push(k.name);
         })
         $scope.labelData[v.id] = labelNames.join(',');
+        ngProgress.complete();
       });
     });
 
