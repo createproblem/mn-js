@@ -5,6 +5,8 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
   function($scope, Movie, $anchorScroll, ngProgress, $timeout) {
     $scope.movies = {};
     $scope.labelData = {};
+    $scope.labelBox = {};
+
     Movie.query(function(movies) {
       $.each(movies, function(i, v) {
         $scope.movies[v.id] = v;
@@ -16,7 +18,6 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
       });
     });
 
-    $scope.labelBox = {};
     $scope.toggleTagBox = function(movieId) {
       if ($scope.labelBox[movieId] === undefined || $scope.labelBox[movieId] === false) {
         $scope.labelBox[movieId] = true;
