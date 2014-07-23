@@ -1,7 +1,7 @@
 <div class="row" role="content">
   <div class="small-12 columns">
     <div class="row" ng-repeat="movie in movies">
-      <div class="small-2 columns">
+      <div class="small-5 medium-2 columns">
         <img class="thumb" ng-src="http://image.tmdb.org/t/p/w185{{movie.poster_path}}">
       </div>
       <div class="small-7 columns">
@@ -13,7 +13,7 @@
         </ul>
         <input selectize="{create: true}" options='[1, 2, 3]' ng-model="labelData[movie.id]" ng-show="labelBox[movie.id]">
 
-        <p>{{movie.overview | limitTo:200}}</p>
+        <p class="hide-for-small-only">{{movie.overview | limitTo:200}}</p>
       </div>
       <div class="small-2 columns">
         <a class="button tiny secondary no-margin-bottom" ng-click="toggleTagBox(movie.id)" ng-hide="labelBox[movie.id]">
