@@ -3,56 +3,37 @@
 
 angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie', '$anchorScroll', 'ngProgress', '$timeout',
   function($scope, Movie, $anchorScroll, ngProgress, $timeout) {
-    $scope.totalMovies = 0;
-    $scope.moviesPerPage = 25;
-    $scope.config = {};
-    $scope.myOptions = [];
-    $scope.config = {
-      create: true
-    };
-    $scope.myModel = "";
-    getResultPage(1);
+    $scope.movies = {};
+    $scope.labelData = {};
+    Movie.query(function(movies) {
+      $.each(movies, function(i, v) {
+        $scope.movies[v.id] = v;
+        var labelNames = [];
+        $.each(v.labels, function(j, k) {
+          labelNames.push(k.name);
+        })
+        $scope.labelData[v.id] = labelNames.join(',');
+      });
+    });
 
-    $scope.pagination = {
-      current: 1
-    };
-
-    // sel stuff
-    $scope.tagBox = {};
-    $scope.tagData = {};
+    $scope.labelBox = {};
     $scope.toggleTagBox = function(movieId) {
-      if ($scope.tagBox[movieId] === undefined || $scope.tagBox[movieId] === false) {
-        $scope.tagBox[movieId] = true;
+      if ($scope.labelBox[movieId] === undefined || $scope.labelBox[movieId] === false) {
+        $scope.labelBox[movieId] = true;
       } else {
-        $scope.tagBox[movieId] = false;
+        $scope.labelBox[movieId] = false;
       }
     };
 
-    $scope.saveLabels = function(movieId) {
-      var labels = $scope.tagData[movieId];
-      var movie = new Movie({
-        labels: labels
+    $scope.save = function(movieId) {
+      $scope.movies[movieId].labels = [];
+      var labels = $scope.labelData[movieId].split(',');
+      $.each(labels, function(k, v) {
+        $scope.movies[movieId].labels.push({
+          name: v
+        });
       });
-      movie.$update({id: movieId});
-    }
-
-    $scope.pageChanged = function(newPage) {
-      getResultPage(newPage);
-    };
-
-    function getResultPage(page) {
-      ngProgress.start();
-      Movie.paginated({
-        'page': page,
-        'max': $scope.moviesPerPage
-      }, function(response) {
-        $scope.totalMovies = response.total_results;
-        $scope.movies = response.movies;
-        // $timeout(function() {ngProgress.complete()});
-        ngProgress.complete();
-
-        $anchorScroll();
-      });
+      $scope.movies[movieId].$save({id: movieId});
     };
   }])
 .controller('MovieNewCtrl', ['$scope', 'Movie', 'Message',

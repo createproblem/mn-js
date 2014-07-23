@@ -11,26 +11,15 @@
         <ul class="label-list">
           <li ng-repeat="label in movie.labels"><span class="label">{{label.name}}</span></li>
         </ul>
-        <input selectize="{create: true}" options='[1, 2, 3]' ng-model="tagData[movie.id]" ng-show="tagBox[movie.id]">
-
-        <!-- <div class="row collapse">
-          <div class="small-10 columns">
-            <input selectize="{create: true}" options='[1, 2, 3]' ng-model="tagData[movie.id]" ng-show="tagBox[movie.id]">
-          </div>
-          <div class="small-2 columns">
-            <a class="button tiny secondary no-margin-bottom" ng-click="toggleTagBox(movie.id)">
-              <i class="fa fa-save"></i>
-            </a>
-          </div>
-        </div> -->
+        <input selectize="{create: true}" options='[1, 2, 3]' ng-model="labelData[movie.id]" ng-show="labelBox[movie.id]">
 
         <p>{{movie.overview | limitTo:200}}</p>
       </div>
       <div class="small-2 columns">
-        <a class="right button tiny secondary no-margin-bottom" ng-click="toggleTagBox(movie.id)">
+        <a class="button tiny secondary no-margin-bottom" ng-click="toggleTagBox(movie.id)" ng-hide="labelBox[movie.id]">
           <i class="fa fa-tag"></i>
         </a>
-        <a class="right button tiny secondary no-margin-bottom" ng-click="toggleTagBox(movie.id)">
+        <a class="button tiny secondary no-margin-bottom" ng-click="save(movie.id); toggleTagBox(movie.id)" ng-show="labelBox[movie.id]">
           <i class="fa fa-save"></i>
         </a>
       </div>
