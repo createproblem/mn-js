@@ -3,20 +3,19 @@
 
 angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie', '$anchorScroll', 'ngProgress', '$timeout',
   function($scope, Movie, $anchorScroll, ngProgress, $timeout) {
-    $scope.movies = {};
+    $scope.movies = [];
     $scope.labelData = {};
     $scope.labelBox = {};
     ngProgress.start();
-    Movie.query(function(movies) {
+    $scope.movies = Movie.query(function(movies) {
       $.each(movies, function(i, v) {
-        $scope.movies[v.id] = v;
         var labelNames = [];
         $.each(v.labels, function(j, k) {
           labelNames.push(k.name);
-        })
+        });
         $scope.labelData[v.id] = labelNames.join(',');
-        ngProgress.complete();
       });
+      ngProgress.complete();
     });
 
     $scope.toggleTagBox = function(movieId) {
@@ -27,15 +26,15 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
       }
     };
 
-    $scope.save = function(movieId) {
-      $scope.movies[movieId].labels = [];
-      var labels = $scope.labelData[movieId].split(',');
+    $scope.save = function(movie) {
+      movie.labels = [];
+      var labels = $scope.labelData[movie.id].split(',');
       $.each(labels, function(k, v) {
-        $scope.movies[movieId].labels.push({
+        movie.labels.push({
           name: v
         });
       });
-      $scope.movies[movieId].$save({id: movieId});
+      movie.$update({id: movie.id});
     };
   }])
 .controller('MovieNewCtrl', ['$scope', 'Movie', 'Message',

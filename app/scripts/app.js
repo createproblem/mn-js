@@ -33,11 +33,13 @@ angular
       })
       .when('/movies', {
         templateUrl: 'views/movies.html',
-        controller: 'MovieCtrl'
+        controller: 'MovieCtrl',
+        authRequired: true
       })
       .when('/movies/new', {
         templateUrl: 'views/movie-new.html',
-        controller: 'MovieNewCtrl'
+        controller: 'MovieNewCtrl',
+        authRequired: true
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -46,4 +48,13 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }).run(['$rootScope', 'mnService', '$location',
+    function($rootScope, mnService, $location) {
+      $rootScope.$on('$routeChangeStart', function(event, next) {
+        if (next.authRequired) {
+          if (!mnService.isReady()) {
+            $location.path('/');
+          }
+        }
+      });
+  }]);

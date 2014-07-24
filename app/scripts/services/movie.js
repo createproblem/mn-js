@@ -23,7 +23,6 @@ angular.module('mnJsApp.services').factory('Movie', ['$resource', 'mnService', '
       'search': {method: 'GET', url: url() + '/tmdb/search.json'},
       'paginated':  {method:'GET', isArray: false},
       'labels': {method: 'GET', url: url() + '/labels.json', isArray: true},
-      'update': {method: 'PUT'},
-      'save': {method: 'PUT'},
+      'update': {method: 'PUT'}
     });
   }]);

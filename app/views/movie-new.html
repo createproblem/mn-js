@@ -20,12 +20,25 @@
   <div class="small-12 columns">
     <div ng-show="totalResults === 0">No movies where found.</div>
   </div>
+</div>
 
-  <div class="small-12 columns movie" ng-repeat="movie in movies">
-    <img class="left thumb" ng-show="movie.poster_path.length > 0" ng-src="http://image.tmdb.org/t/p/w92{{movie.poster_path}}">
-    <h4>
-      {{movie.title}} <small>({{movie.release_date | date:'yyyy'}})</small>
-    </h4>
-    <button class="btn btn-sm" ng-click="addMovie(movie)">Add</button>
+<div class="row">
+  <div class="small-8 small-centered columns center">
+    <div class="row" ng-repeat="movie in movies">
+      <div class="small-5 medium-2 columns">
+        <img class="thumb" ng-src="http://image.tmdb.org/t/p/w185{{movie.poster_path}}">
+      </div>
+      <div class="small-7 columns">
+        <h4>
+          {{movie.title}} <small>({{movie.release_date | date:'yyyy'}})</small>
+        </h4>
+        <p class="hide-for-small-only">{{movie.overview | limitTo:200}}</p>
+      </div>
+      <div class="small-2 columns">
+        <a class="button tiny secondary" ng-click="addMovie(movie)">
+          <i class="fa fa-save"></i>
+        </a>
+      </div>
+    </div>
   </div>
 </div>

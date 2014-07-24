@@ -1,4 +1,4 @@
-// Generated on 2014-06-26 using generator-angular 0.9.1
+// Generated on 2014-07-24 using generator-angular 0.9.1
 'use strict';
 
 // # Globbing
@@ -174,18 +174,6 @@ module.exports = function (grunt) {
       sass: {
         src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
-      },
-      target: {
-        src: [
-          '<%= yeoman.app %>/**/*.html'
-        ],
-        exclude: [
-          'modernizr',
-          'font-awesome',
-          'jquery-placeholder',
-          'jquery.cookie',
-          'foundation'
-        ]
       }
     },
 
@@ -283,6 +271,7 @@ module.exports = function (grunt) {
     // concat: {
     //   dist: {}
     // },
+    //
 
     replace: {
       development: {
@@ -382,11 +371,6 @@ module.exports = function (grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
-        }, {
-          expand: true,
-          cwd: '.',
-          src: 'bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/*',
-          dest: '<%= yeoman.dist %>'
         }]
       },
       styles: {

@@ -28,7 +28,7 @@ angular.module('selectize', [])
                 });
               }
             });
-            // $element[0].selectize.setValue("");
+            $element[0].selectize.focus();
           });
         } else {
           if ($element[0].selectize !== undefined) {
