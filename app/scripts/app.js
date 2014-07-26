@@ -21,6 +21,7 @@ angular
     'selectize',
     'services.config',
     'mnJsApp.services',
+    'mnJsApp.filters',
     'mnJsApp.directives',
     'mnJsApp.controllers',
     'angularUtils.directives.dirPagination'

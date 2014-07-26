@@ -7,6 +7,7 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
     $scope.labelData = {};
     $scope.labelBox = {};
     ngProgress.start();
+    $scope.fLabels = [];
     $scope.movies = Movie.query(function(movies) {
       $.each(movies, function(i, v) {
         var labelNames = [];
@@ -17,6 +18,16 @@ angular.module('mnJsApp.controllers').controller('MovieCtrl', ['$scope', 'Movie'
       });
       ngProgress.complete();
     });
+
+    $scope.toogleSelection = function(val) {
+      var idx = $scope.fLabels.indexOf(val);
+
+      if (idx > -1) {
+        $scope.fLabels.splice(idx, 1);
+      } else {
+        $scope.fLabels.push(val);
+      }
+    }
 
     $scope.toggleTagBox = function(movieId) {
       if ($scope.labelBox[movieId] === undefined || $scope.labelBox[movieId] === false) {

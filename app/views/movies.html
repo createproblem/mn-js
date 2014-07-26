@@ -1,6 +1,9 @@
 <div class="row" role="content">
   <div class="small-12 columns">
-    <div class="row" ng-repeat="movie in movies|orderBy:'created_at':true">
+    <!-- <input type="checkbox" ng-model="fLabels[0]">Horror -->
+    <input type="checkbox" name="fLabels[]" value="Underworld" ng-checked="fLabels.indexOf('Underworld') > -1" ng-click="toogleSelection('Underworld')">Underworld
+    <input type="checkbox" name="fLabels[]" value="Wrong Turn" ng-checked="fLabels.indexOf('Wrong Turn') > -1" ng-click="toogleSelection('Wrong Turn')">Wrong Turn
+    <div class="row" ng-repeat="movie in movies|orderBy:'release_date':true | selectedLabels:fLabels">
       <div class="small-5 medium-2 columns">
         <img class="thumb" ng-src="http://image.tmdb.org/t/p/w185{{movie.poster_path}}">
       </div>
