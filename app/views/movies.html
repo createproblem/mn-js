@@ -1,11 +1,20 @@
-<div class="row" role="content">
+<div class="row">
   <div class="small-12 columns">
-    <div class="movie" ng-repeat="movie in movies|orderBy:'release_date':true | selectedLabels:fLabels">
+    <ul class="label-list">
+      <li ng-repeat="label in labels"><a ng-click="toggleSelection(label.name)" class="label">{{label.name}}</a></li>
+      <li><a ng-click="toggleSelection('-no-labels-')" class="label">EMPTY</a></li>
+      <li><a ng-click="resetLabelSelection()" class="label">CLEAR</a></li>
+    </ul>
+  </div>
+</div>
+<div class="row" role="content">
+  <div class="small-12 medium-12 columns">
+    <div class="movie" ng-repeat="movie in movies|orderBy:'release_date':true | selectedLabels:sLabels">
       <div class="row">
         <div class="small-4 medium-2 columns">
-          <img class="thumb" ng-src="http://image.tmdb.org/t/p/w92{{movie.poster_path}}">
+          <img class="thumb" src="http://image.tmdb.org/t/p/w154{{movie.poster_path}}">
         </div>
-        <div class="small-8 medium-8 columns">
+        <div class="small-8 medium-7 columns">
           <h4>
             {{movie.title}} <small>({{movie.release_date | date:'yyyy'}})</small>
           </h4>
@@ -17,14 +26,21 @@
           <p class="hide-for-small-only">{{movie.overview | limitTo:200}}</p>
         </div>
         <div class="medium-2 columns hide-for-small-only">
-          <a class="button tiny secondary right" ng-click="toggleTagBox(movie.id)" ng-hide="labelBox[movie.id]">
+          <a class="button tiny secondary right" ng-click="toggleLabelBox(movie.id)" ng-hide="labelBox[movie.id]">
             <i class="fa fa-tag"></i>
           </a>
-          <a class="button tiny secondary right" ng-click="save(movie); toggleTagBox(movie.id)" ng-show="labelBox[movie.id]">
+          <a class="button tiny secondary right" ng-click="save(movie); toggleLabelBox(movie.id)" ng-show="labelBox[movie.id]">
             <i class="fa fa-save"></i>
+          </a>
+          <a class="button tiny secondary right">
+            <i class="fa fa-trash-o"></i>
+          </a>
+          <a class="button tiny secondary right">
+            <i class="fa fa-star"></i>
           </a>
         </div>
       </div>
     </div>
   </div>
+  <!-- <div class="medium-3 columns medium-pull-9" style="border: 1px aqua solid;">asd</div> -->
 </div>
